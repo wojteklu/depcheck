@@ -1,0 +1,37 @@
+PATH
+  remote: .
+  specs:
+    depcheck (0.1.0)
+      clamp (~> 0.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    clamp (0.6.5)
+    diff-lcs (1.2.5)
+    rake (10.5.0)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.1)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.6)
+  depcheck!
+  rake (~> 10.4)
+  rspec (~> 3.4)
+
+BUNDLED WITH
+   1.11.2
