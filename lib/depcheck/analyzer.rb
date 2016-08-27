@@ -16,8 +16,8 @@ module Depcheck
 
         provides = dependencies['provides-top-level']
         nominals = dependencies['provides-nominal']
-        depends = dependencies['depends-top-level']
-        depends_member = dependencies['depends-member']
+        depends = dependencies['depends-top-level'] || []
+        depends_member = dependencies['depends-member'] || []
 
         if provides.nil? || nominals.nil? || provides.count != nominals.count
           next
