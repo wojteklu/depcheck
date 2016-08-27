@@ -8,14 +8,14 @@ module Depcheck
               "-workspace \"#{workspace}\" -scheme \"#{scheme}\""
             end
 
-      build_settings = `xcodebuild #{arg} -showBuildSettings build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO 2>&1`
+      build_settings = `xcodebuild #{arg} -showBuildSettings build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO`
+      raise StandardError until $?.success?
 
-      if build_settings
-        derived_data_path = build_settings.match(/ OBJROOT = (.+)/)
-        derived_data_path = derived_data_path[1] if derived_data_path
-      end
+      derived_data_path = build_settings.match(/ OBJROOT = (.+)/)[1]
+      project_name = build_settings.match(/ PROJECT_NAME = (.+)/)[1]
+      target_name = build_settings.match(/ TARGET_NAME = (.+)/)[1]
 
-      derived_data_path
+      "#{derived_data_path}/#{project_name}.build/**/#{target_name}.build"
     end
 
     def self.find_swiftdeps(project, workspace, scheme)
