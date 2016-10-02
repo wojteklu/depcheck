@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    depcheck (0.1.0)
+    depcheck (0.2.0)
       clamp (~> 0.6)
 
 GEM
