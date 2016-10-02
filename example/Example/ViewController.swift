@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     var model1: Model1!
     var model2: Model2!
     
-    private func test() {
+    fileprivate func test() {
         _ = Model3()
         _ = Model4()
     }
