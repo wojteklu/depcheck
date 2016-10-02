@@ -10,7 +10,8 @@ class UsageCommand < Clamp::Command
     end
 
     swiftdeps = Depcheck::Finder.find_swiftdeps(project, workspace, scheme)
-    results = Depcheck::Analyzer.generate_dependencies(swiftdeps)
+    analyzer = Depcheck::Analyzer.new
+    results = analyzer.generate_dependencies(swiftdeps)
     Depcheck::SimpleOutput.post_usage(results)
   end
 

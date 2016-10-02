@@ -15,7 +15,7 @@ module Depcheck
       objs = objs.sort_by(&:usage).reverse
 
       objs.each_with_index do |obj, index|
-        puts "#{index + 1}. #{obj.name} - #{obj.usage} \n"
+        puts "#{index + 1}. #{obj.name} - #{obj.usage}\n"
       end
     end
 
