@@ -30,7 +30,7 @@ gem install depcheck
 
 `Analyze` command reports dependencies per classes. `Usage` command reports how many dependants a class have. `Graph` command generates dependency graph.
 
-Build your project, and then run:
+Build your project using Debug configuration, and then run:
 
 ```sh
 $ depcheck analyze --project path/to/project.xcodeproj
