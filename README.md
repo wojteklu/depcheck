@@ -1,8 +1,8 @@
 # Depcheck
 
-`Depcheck` is a dependency analyzer tool for Swift projects. `Depcheck` reports dependencies per class, allowing you to easily detect classes that have too many dependencies. `Depcheck` can also report how many dependants a class have. Therefore you can spot the most used and unused classes.
+`Depcheck` is a dependency analyzer tool for Swift projects. `Depcheck` reports dependencies per class, allowing you to easily detect classes that have too many dependencies. `Depcheck` can also report how many dependants a class have. Therefore you can spot the most used and unused classes. Additionaly you can generate *dependency graph* of your project.
 
-<img src="https://github.com/wojteklu/depcheck/blob/master/example/analyze.png?raw=true">
+<img src="https://github.com/wojteklu/depcheck/blob/master/example/analyze.png?raw=true" width="600px">
 
 ## Installation
 
@@ -26,7 +26,7 @@ gem install depcheck
 
 ## Usage
 
-`Analyze` command reports dependencies per classes. `Usage` command reports how many dependants a class have.
+`Analyze` command reports dependencies per classes. `Usage` command reports how many dependants a class have. `Graph` command generates dependency graph.
 
 Build your project, and then run:
 
@@ -44,6 +44,10 @@ $ depcheck analyze --workspace path/to/workspace.xcworkspace --scheme YourXcodeS
 ## Contributing
 
 I’d love to see your ideas for improving this library! The best way to contribute is by submitting a pull request. I’ll do my best to respond to your patch as soon as possible. You can also submit a [new GitHub issue](https://github.com/wojteklu/depcheck/issues/new) if you find bugs or have questions.
+
+## Author
+
+Wojtek Lukaszuk [@wojteklu](http://twitter.com/wojteklu)
 
 ## License
 
