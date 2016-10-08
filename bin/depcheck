@@ -4,12 +4,14 @@ require 'yaml'
 require_relative '../lib/depcheck'
 require_relative '../lib/depcheck/command/analyze_command'
 require_relative '../lib/depcheck/command/usage_command'
+require_relative '../lib/depcheck/command/graph_command'
 require_relative '../lib/depcheck/command/version_command'
 
 class MainCommand < Clamp::Command
 
   subcommand 'analyze', 'Reports dependencies per class', AnalyzeCommand
   subcommand 'usage', 'Reports how many dependants a class have', UsageCommand
+  subcommand 'graph', 'Generates dependency graph', GraphCommand
   subcommand 'version', 'Prints depcheck version', VersionCommand
 end
 
