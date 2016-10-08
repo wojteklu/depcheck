@@ -4,6 +4,8 @@
 
 <img src="https://github.com/wojteklu/depcheck/blob/master/example/analyze.png?raw=true" width="600px">
 
+<img src="https://github.com/wojteklu/depcheck/blob/master/example/graph.png?raw=true" height="360px">
+
 ## Installation
 
 Add this line to your application's Gemfile:
