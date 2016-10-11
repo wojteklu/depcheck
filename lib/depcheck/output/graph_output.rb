@@ -1,7 +1,7 @@
 module Depcheck
   class GraphOutput
 
-    def post(objs)
+    def post(objs, include)
 
       # installs graphviz if needed
       system 'brew install graphviz' unless graphviz_installed?
@@ -12,7 +12,7 @@ module Depcheck
       end
 
       # generate graph description
-      graph = generate_graph_description(objs)
+      graph = generate_graph_description(objs, include)
 
       # create temporary graph dot file
       file_name = 'graph'
@@ -27,11 +27,13 @@ module Depcheck
       File.delete("#{file_name}.dot")
     end
 
-    def generate_graph_description(objs)
+    def generate_graph_description(objs, include)
       nodes = []
       objs.each do |obj|
         obj.dependencies.each do |dep|
-          nodes << { source: obj.name, dep: dep }
+          if obj.name.match(/#{include}/) || dep.match(/#{include}/)
+            nodes << { source: obj.name, dep: dep }
+          end
         end
       end
 
