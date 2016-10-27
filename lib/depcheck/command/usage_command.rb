@@ -4,14 +4,7 @@ class UsageCommand < Clamp::Command
   option ['--workspace'], 'WORKSPACE', 'Path to the workspace'
 
   def execute
-
-    unless project || (workspace && scheme)
-      raise StandardError, 'Must provide project path or workspace path with scheme.'
-    end
-
-    swiftdeps = Depcheck::Finder.find_swiftdeps(project, workspace, scheme)
-    analyzer = Depcheck::Analyzer.new
-    results = analyzer.generate_dependencies(swiftdeps)
+    results = Depcheck.run(project, workspace, scheme)
     Depcheck::SimpleOutput.post_usage(results)
   end
 

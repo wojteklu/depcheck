@@ -1,7 +1,7 @@
 module Depcheck
   class GraphOutput
 
-    def post(objs, include)
+    def post(objs, include, dot)
 
       # installs graphviz if needed
       system 'brew install graphviz' unless graphviz_installed?
@@ -21,10 +21,12 @@ module Depcheck
       end
 
       # run dot command
-      `dot -T png #{file_name}.dot > #{file_name}.png && open #{file_name}.png`
-
-      # remove temporary file
-      File.delete("#{file_name}.dot")
+      if dot
+      `dot -T png #{file_name}.dot`
+      elsif
+        `dot -T png #{file_name}.dot > #{file_name}.png && open #{file_name}.png`
+        File.delete("#{file_name}.dot")
+      end
     end
 
     def generate_graph_description(objs, include)

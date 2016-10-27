@@ -5,14 +5,7 @@ class AnalyzeCommand < Clamp::Command
   option ["--verbose", "-v"], :flag, "Enable verbose mode"
 
   def execute
-
-    unless project || (workspace && scheme)
-      raise StandardError, 'Must provide project path or workspace path with scheme.'
-    end
-
-    swiftdeps = Depcheck::Finder.find_swiftdeps(project, workspace, scheme)
-    analyzer = Depcheck::Analyzer.new
-    results = analyzer.generate_dependencies(swiftdeps)
+    results = Depcheck.run(project, workspace, scheme)
     Depcheck::SimpleOutput.post(results, verbose?)
   end
 

@@ -3,18 +3,12 @@ class GraphCommand < Clamp::Command
   option ['--scheme'], 'SCHEME', 'The scheme that the project was built in'
   option ['--workspace'], 'WORKSPACE', 'Path to the workspace'
   option ["--include"], "INCLUDE", "Regexp of classes that will be shown on graph"
+  option ["--dot", "-d"], :flag, "Export dot file"
 
   def execute
-
-    unless project || (workspace && scheme)
-      raise StandardError, 'Must provide project path or workspace path with scheme.'
-    end
-
-    swiftdeps = Depcheck::Finder.find_swiftdeps(project, workspace, scheme)
-    analyzer = Depcheck::Analyzer.new
-    results = analyzer.generate_dependencies(swiftdeps)
+    results = Depcheck.run(project, workspace, scheme)
     output = Depcheck::GraphOutput.new
-    output.post(results, include)
+    output.post(results, include, dot?)
   end
 
 end
