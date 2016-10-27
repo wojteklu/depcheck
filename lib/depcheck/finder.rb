@@ -5,8 +5,10 @@ module Depcheck
       arg = if project
               "-project \"#{project}\""
             else
-              "-workspace \"#{workspace}\" -scheme \"#{scheme}\""
+              "-workspace \"#{workspace}\""
             end
+
+      arg+= " -scheme \"#{scheme}\"" if scheme
 
       build_settings = `xcodebuild #{arg} -showBuildSettings build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO`
       raise StandardError until $?.success?
@@ -15,7 +17,7 @@ module Depcheck
       project_name = build_settings.match(/ PROJECT_NAME = (.+)/)[1]
       target_name = build_settings.match(/ TARGET_NAME = (.+)/)[1]
 
-      "#{derived_data_path}/#{project_name}.build/**/#{target_name}.build"
+      "#{derived_data_path}/#{project_name}.build/**/#{target_name}*.build"
     end
 
     def self.find_swiftdeps(project, workspace, scheme)

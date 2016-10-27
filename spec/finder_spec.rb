@@ -10,7 +10,7 @@ module Depcheck
       end
 
       it 'finds derived data path' do
-        expected = "D/D/P.build/**/T.build"
+        expected = "D/D/P.build/**/T*.build"
         expect(Finder.find_derived_data_path("Test", nil, nil)).to eq expected
       end
     end
